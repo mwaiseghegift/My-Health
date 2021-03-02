@@ -17,15 +17,15 @@
   <div class="header">
     <div class="header_resize">
       <div class="logo">
-        <h1><a href="index.html"><span>My Health</span> <small>Company Slogan Here</small></a></h1>
+        <h1><a href="{% url 'mainapp:index' %}"><span>My Health</span> <small>Company Slogan Here</small></a></h1>
       </div>
       <div class="menu_nav">
         <ul>
-          <li class="active"><a href="index.html"><span>Home Page</span></a></li>
-          <li><a href="support.html"><span>Support</span></a></li>
-          <li><a href="about.html"><span>About Us</span></a></li>
-          <li><a href="blog.html"><span>Blog</span></a></li>
-          <li><a href="contact.html"><span>Contact Us</span></a></li>
+          <li class="active"><a href="{% url 'mainapp:index' %}"><span>Home Page</span></a></li>
+          <li><a href="{% url 'mainapp:support' %}"><span>Support</span></a></li>
+          <li><a href="{% url 'mainapp:about' %}"><span>About Us</span></a></li>
+          <li><a href="{% url 'mainapp:blog-list' %}"><span>Blog</span></a></li>
+          <li><a href="{% url 'mainapp:contact' %}"><span>Contact Us</span></a></li>
         </ul>
       </div>
       <div class="clr"></div>
