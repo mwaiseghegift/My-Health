@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from .models import Blog
+from django.utils import timezone
 
 # Create your views here.
 
 def IndexView(request, *args, **kwargs):
     context = {
+        'recent_posts':Blog.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
         
     }
     return render(request, 'index.html', context)
