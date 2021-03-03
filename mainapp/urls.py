@@ -13,6 +13,7 @@ app_name = 'mainapp'
 urlpatterns = [
   path('', IndexView, name="index"),
   path('blog/', BlogView, name="blog-list"),
+  path('blog/<slug>/', BlogDetailView, name='blog-detail'),
   path('support/', SupportView, name="support"),
   path('contact/', ContactView, name='contact'),
   path('about/', AboutView, name="about"), 

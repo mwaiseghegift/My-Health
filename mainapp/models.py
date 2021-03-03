@@ -28,7 +28,7 @@ class Blog(models.Model):
                                      options = {'quality':100})
     content = HTMLField()
     pub_date = models.DateTimeField(default=timezone.now)
-    slug=models.SlugField(unique=True)
+    slug=models.SlugField(unique=True, blank=True)
     
     def __str__(self):
         return f"{self.title} - {self.user}"
@@ -75,9 +75,5 @@ class About(models.Model):
     def __str__(self):
         return self.name
     
-    
-    
-    
-    
-    
-    
+class Donation(models.Model):
+    amount = models.IntegerField()
