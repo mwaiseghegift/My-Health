@@ -3,6 +3,8 @@ from .models import (
     Blog,
     Comment,
     About,
+    ImageProcessor,
+    Gallery,
 )
 admin.site.site_header = "My Health"
 admin.site.site_title = "My Health"
@@ -19,4 +21,21 @@ class BlogAdmin(admin.ModelAdmin):
     search_fields = ['title','user']
 
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(About)
+
+
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ['about','mission']
+
+admin.site.register(About, AboutAdmin)
+
+class ImageProcessorAdmin(admin.ModelAdmin):
+    list_display = ['name','image_thumbnail']
+    list_filter = ['date_upload']
+    
+admin.site.register(ImageProcessor, ImageProcessorAdmin)
+
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    list_filter = ['date_upload']
+    
+admin.site.register(Gallery, GalleryAdmin)

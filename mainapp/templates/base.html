@@ -28,12 +28,16 @@
       <div class="slider">
         <div id="coin-slider"> 
             <a href="#"><img src="{% static 'images/slide1.jpg' %}" width="960" height="360" alt="" />
-                <span><big>Sed condimentum justo sit amet urna ornare euismod.</big><br />
-                    Tusce nec iaculis risus hasellus nec sem sed tellus malesuada porttitor. Mauris scelerisque feugiat ante in vulputate. Nam sit amet ullamcorper tortor. Phasellus posuere facilisis cursus. Nunc est lorem, dictum at scelerisque sit amet, faucibus et est. Proin mattis ipsum quis arcu aliquam molestie.</span></a> 
-                    <a href="#"><img src="{% static 'images/slide2.jpg' %}" width="960" height="360" alt="" /><span><big>Amet urna ornare euismodSed condimentum.</big><br />
-                    Tusce nec iaculis risus hasellus nec sem sed tellus malesuada porttitor. Mauris scelerisque feugiat ante in vulputate. Nam sit amet ullamcorper tortor. Phasellus posuere facilisis cursus. Nunc est lorem, dictum at scelerisque sit amet, faucibus et est. Proin mattis ipsum quis arcu aliquam molestie.</span></a> 
-                    <a href="#"><img src="{% static 'images/slide3.jpg' %}" width="960" height="360" alt="" /><span><big>Sed condimentum justo sit amet urna ornare euismod.</big><br />
-                    Tusce nec iaculis risus hasellus nec sem sed tellus malesuada porttitor. Mauris scelerisque feugiat ante in vulputate. Nam sit amet ullamcorper tortor. Phasellus posuere facilisis cursus. Nunc est lorem, dictum at scelerisque sit amet, faucibus et est. Proin mattis ipsum quis arcu aliquam molestie.</span></a> </div>
+                <span><big>The art of healing</big><br />
+                  The art of healing comes from nature, not from the physician. Therefore the physician must start from nature, with an open mind
+                  </span></a> 
+                    <a href="#"><img src="{% static 'images/slide2.jpg' %}" width="960" height="360" alt="" />
+                      <span><big>Doctor of Democracy</big><br />
+                        I am the Doctor of Democracy. I am America's Truth Detector. And as the Doctor of Democracy, the deal you have with your doctor isn't changing. You get to keep your doctor. You get to keep your plan. You get to keep your station. Nothing's changing, and it really never was gonna change.
+                      </span></a> 
+                    <a href="#"><img src="{% static 'images/slide3.jpg' %}" width="960" height="360" alt="" />
+                      <span><big>Of Course its Hard</big><br />
+                        Of course it's hard. “No pain, no gain. “Your body can stand almost anything. “Success isn't always about greatness. “Train insane or remain the same.” “Definition of a really good workout: when you hate doing it, but you love finishing it.” “Push yourself because no one else is going to do it for you.” “Suck it up.</span></a> </div>
         <div class="clr"></div>
       </div>
       <div class="clr"></div>
@@ -51,29 +55,28 @@
     <div class="fbg_resize">
         <div class="col c1">
             <h2><span>Image</span> Gallery</h2>
-                <a href="#"><img src="{% static 'images/gal1.jpg' %}" width="75" height="75" alt="" class="gal" /></a> 
-                <a href="#"><img src="{% static 'images/gal2.jpg' %}" width="75" height="75" alt="" class="gal" /></a> 
-                <a href="#"><img src="{% static 'images/gal3.jpg' %}" width="75" height="75" alt="" class="gal" /></a> 
-                <a href="#"><img src="{% static 'images/gal4.jpg' %}" width="75" height="75" alt="" class="gal" /></a> 
-                <a href="#"><img src="{% static 'images/gal5.jpg' %}" width="75" height="75" alt="" class="gal" /></a> 
-                <a href="#"><img src="{% static 'images/gal6.jpg' %}" width="75" height="75" alt="" class="gal" /></a> 
+            
+            {% for object in footer_gallery %}
+            <a href="#"><img src="{{ object.image_thumbnail.url }}" width="75" height="75" alt="" class="gal" /></a> 
+            {% endfor %}
+            
+                
         </div>
       <div class="col c2">
         <h2><span>Services</span> Overview</h2>
-            <p>Curabitur sed urna id nunc pulvinar semper. Nunc sit amet tortor sit amet lacus sagittis posuere cursus vitae nunc.Etiam venenatis, turpis at eleifend porta, nisl nulla bibendum justo.</p>
+            <p>My Health Record brings together health information from healthcare providers across the sector, allowing important patient information to be shared between them.</p>
         <ul class="fbg_ul">
-          <li><a href="#">Lorem ipsum dolor labore et dolore.</a></li>
-          <li><a href="#">Excepteur officia deserunt.</a></li>
-          <li><a href="#">Integer tellus ipsum tempor sed.</a></li>
+          <li><a href="#">Consultation.</a></li>
+          <li><a href="#">Health Advice.</a></li>
+          <li><a href="#">Reference.</a></li>
         </ul>
       </div>
       <div class="col c3">
         <h2><span>Contact</span> Us</h2>
-            <p>Nullam quam lorem, tristique non vestibulum nec, consectetur in risus. Aliquam a quam vel leo gravida gravida eu porttitor dui.</p>
-            <p class="contact_info"> <span>Address:</span> 1458 TemplateAccess, USA<br />
-            <span>Telephone:</span> +123-1234-5678<br />
-            <span>FAX:</span> +458-4578<br />
-            <span>Others:</span> +301 - 0125 - 01258<br />
+            <p>You can reach My Health staff through the following.</p>
+            <p class="contact_info"> <span>Address:</span> 1010 Karatina, Kenya<br />
+            <span>Telephone:</span> +254 7128 6097<br />
+            <span>Others:</span> +254 - 1101 - 1111<br />
             <span>E-mail:</span> <a href="mailto:derickokengodigital@gmail.com">derickokengodigital@gmail.com</a> </p>
       </div>
       <div class="clr"></div>

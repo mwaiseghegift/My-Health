@@ -69,13 +69,36 @@ class Comment(models.Model):
         return True
     
 class About(models.Model):
-    name = HTMLField()
+    about = HTMLField()
     mission = HTMLField()
     
     def __str__(self):
-        return self.name
+        return f"{self.about}"
     
-class Donation(models.Model):
-    amount = models.IntegerField()
+class ImageProcessor(models.Model):
+    name = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='images/slides/')
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(960, 360)],
+                                     format='JPEG',
+                                     options = {'quality':150},
+                                     )
+    date_upload = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.name} - {self.image_thumbnail.url}"
+    
+class Gallery(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="images/gallery")
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors = [ResizeToFill(75,75)],
+                                     format='JPEG',
+                                     options = {'quality':60},
+                                     )
+    date_upload = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.name
     
     

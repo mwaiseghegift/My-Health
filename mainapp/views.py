@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from .models import Blog
+from .models import Blog, About, Gallery
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -25,6 +25,7 @@ def IndexView(request, *args, **kwargs):
     
     context = {
         'page_obj':page_obj,
+        'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6]
     }
     return render(request, 'index.html', context)
 
@@ -44,6 +45,7 @@ def BlogView(request, *args, **kwargs):
     
     context = {
         'page_obj':page_obj,
+        'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
 
 def BlogDetailView(request, slug):
@@ -51,6 +53,7 @@ def BlogDetailView(request, slug):
     
     context = {
         'post':post,
+        'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
     return render(request, 'blog_detail.html', context)
 
@@ -71,7 +74,8 @@ def SupportView(request, *args, **kwargs):
         
     
     context = {
-        'amount':amount
+        'amount':amount,
+        'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
     
     return render(request, 'support.html', context)
@@ -79,19 +83,24 @@ def SupportView(request, *args, **kwargs):
 def PaypallCheckout(request, *args, **kwargs):
     amount = request.session.get('amount')
     print(amount)
+    
+    context = {
+        'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
+    }
 
     
-    return render(request, 'paypall.html', {})
+    return render(request, 'paypall.html', context)
 
 def AboutView(request, *args, **kwargs):
     context = {
-        
+        'about': About.objects.all(),
+        'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
     return render(request, 'about.html', context)
 
 def ContactView(request, *args, **kwargs):
     context = {
-        
+        'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
     return render(request, 'contact.html', context)
 
