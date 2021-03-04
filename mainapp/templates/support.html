@@ -13,60 +13,39 @@
   <div class="content_resize">
     <div class="mainbar">
       <div class="article">
-        <h2><span>Support to</span> Company Name</h2>
+        <h2><span>Support to</span> My Health</h2>
         <div class="clr"></div>
         <p>
           The gift that has been given to me says much about our capacity for great compassion and generosity, and I hope it sends an inspiring message to others about the importance of organ donation.
           Read more at <a href="https://www.brainyquote.com/topics/donation-quotes">https://www.brainyquote.com/topics/donation-quotes</a>
         </p>
-        <ul class="sb_menu">
-          <form action="/your-amount/" method="post">
-            <label for="your_amount">Amount: </label>
-            <input id="your_amount" type="text" name="your_name" method="GET" value="50">
 
-            <div id="paypal-button-container"></div>
+          <form id="amount-form" action="{% url 'mainapp:paypall' %}" method="POST">
+            {% csrf_token %}
+            <div class="donate">
+              <label class="donate-text" for="your_amount">Amount(USD): </label><br><br>
+              <input class="donate-input" id="amount" type="text" name="amount"><br><br>
+              <input  id="continue-donate" class="donate-button" type="submit" value="Continue">
+              
+            </div> 
         </form>
-        </ul>
+</div>
+
       </div>
     </div>
 
     
 
-    <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AZAryyw_xw_-WevEOHEYurfeurmWV6kCpSiMgjtTOzcFhMYA_exRPEAYbQgxpWeeos2_sgjCMFbZ6fRn&currency=USD"></script>
 
-    <script>
-        // Render the PayPal button into #paypal-button-container
-        paypal.Buttons({
-
-            // Set up the transaction
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '88.44'
-                        }
-                    }]
-                });
-            },
-
-            // Finalize the transaction
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    // Show a success message to the buyer
-                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                });
-            }
-
-
-        }).render('#paypal-button-container');
-    </script>
     
     {% include 'sidebar.html' %}
 
     <div class="clr"></div>
   </div>
 </div>
+<script type="text/javascript">
 
+
+
+</script>
 {% endblock body %}
-  

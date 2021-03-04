@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from .models import Blog
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.core.mail import send_mail, BadHeaderError
+from .forms import AmountForm
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 
 # Create your views here.
 
@@ -54,12 +56,32 @@ def BlogDetailView(request, slug):
 
 def SupportView(request, *args, **kwargs):
     
-    query = request.GET.get('your_amount', None)
+    amount = ""    
+    
+    if request.method == 'POST':
+        form = AmountForm(request.POST)
+        
+        if form.is_valid():
+            amount = form.cleaned_data['amount']
+            request.session['amount'] = amount
+            redirect('mainapp:paypall')
+                 
+        else:
+            form = AmountForm()
+        
     
     context = {
-        
+        'amount':amount
     }
+    
     return render(request, 'support.html', context)
+
+def PaypallCheckout(request, *args, **kwargs):
+    amount = request.session.get('amount')
+    print(amount)
+
+    
+    return render(request, 'paypall.html', {})
 
 def AboutView(request, *args, **kwargs):
     context = {
@@ -73,5 +95,4 @@ def ContactView(request, *args, **kwargs):
     }
     return render(request, 'contact.html', context)
 
-def DonationForm(request):
-    pass
+

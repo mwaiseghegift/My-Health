@@ -77,3 +77,5 @@ class About(models.Model):
     
 class Donation(models.Model):
     amount = models.IntegerField()
+    
+    

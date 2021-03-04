@@ -480,3 +480,20 @@ ol li .send {
 a {
 	outline:none;
 }
+
+.donate {
+	padding : 10px;
+	background-color:#58a1b3;
+	position: center;
+	text-align: center;
+}
+
+.donate-text {
+	font-size:large;
+	font-weight:bold;
+	color:white;
+}
+
+.donate-input {
+	padding : 10px;
+}

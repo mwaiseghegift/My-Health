@@ -16,7 +16,7 @@
       {% for object in page_obj %}
         <div class="article">
           <h2><span>{{ object.title }}</span></h2>
-          <p class="infopost">Posted <span class="date">on {{ object.pub_date.day }} {{ object.pub_date|date:'M' }} {{ object.pub_date.year }}</span> by <a href="#">{{ object.user.username }}</a> &nbsp;&nbsp;|&nbsp;&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a> <a href="#" class="com"><span>11</span></a></p>
+          <p class="infopost">Posted <span class="date">on {{ object.pub_date.day }} {{ object.pub_date|date:'M' }} {{ object.pub_date.year }}</span> by <a href="#">{{ object.user.username }}</a> &nbsp;&nbsp;|&nbsp;&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a> <a href="#" class="com"><span>{{ object.id }}</span></a></p>
           <div class="clr"></div>
           <div class="img"><img src="{{ object.image_thumbnail.url }}" width="620" height="154" alt="" class="fl" /></div>
           <div class="post_content">
