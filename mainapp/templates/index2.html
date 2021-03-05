@@ -9,7 +9,7 @@
     <link href="{% static 'bootstrap/css/mdb.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/style.min.css' %}">
-    <title>Blog</title>
+    <title>My Health | {% block title %}{% endblock title %}</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
     
             <!-- Brand -->
             <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-              <strong class="blue-text">MDB</strong>
+              <strong class="blue-text logo">My Health</strong>
             </a>
     
             <!-- Collapse -->
@@ -81,7 +81,7 @@
         <!-- Navbar -->
     
       </header>
-
+      <br><br>
     <div class="container">
           <!-- Slideshow container -->
         <div class="slideshow-container">
@@ -133,7 +133,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
             <div class="mainbar">
               
               {% for object in page_obj %}
@@ -152,7 +152,31 @@
                 
                 <div class="clr"></div>
                 </div>
-                <p class="pages"><small>Page 1 of 2</small> <span>1</span> <a href="#">2</a> <a href="#">&raquo;</a></p>
+                <p class="pages">
+                  <p class="pages">
+                    <small>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</small> 
+                    {% if page_obj.has_previous %}
+                      <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                    {% endif %}
+            
+                    
+                    {% for num in page_obj.paginator.page_range %}
+                      
+                      {% if page_obj.number == num %}
+                        <a href="?page={{ num }}"><span>{{ num }}</span></a>
+                      {% endif %}
+                        
+                    {% endfor %}
+                      
+            
+                    {% if page_obj.has_next %} 
+                        <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                    {% endif %} 
+                     {% if page_obj.has_next %} 
+                        <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                     {% endif %}
+                  </p>
+                </p>
               </div>
 
         <div class="col-md-4">
@@ -202,67 +226,53 @@
 
 
 
-<footer class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn">
+  <footer class="page-footer font-small mdb-color darken-2 mt-4 wow fadeIn">
+    <div class="container">
+      <div class="row">
 
-    <!--Call to action-->
-    <div class="pt-4">
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Download MDB
-        <i class="fas fa-download ml-2"></i>
-      </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-        free tutorial
-        <i class="fas fa-graduation-cap ml-2"></i>
-      </a>
+        <div class="col c1">
+          <h2><span>Image</span> Gallery</h2>
+          
+          {% for object in footer_gallery %}
+          <a href="#"><img src="{{ object.image_thumbnail.url }}" width="75" alt="" class="gal" /></a> 
+          {% endfor %}
+          
+              
+      </div>
+
+      <div class="col-md-4">
+        <h2><span>Services</span> Overview</h2>
+            <p>My Health Record brings together health information from healthcare providers across the sector, allowing important patient information to be shared between them.</p>
+        <ul class="fbg_ul">
+          <li><a href="#">Consultation.</a></li>
+          <li><a href="#">Health Advice.</a></li>
+          <li><a href="#">Reference.</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h2><span>Contact</span> Us</h2>
+            <p>You can reach My Health staff through the following.</p>
+            <p class="contact_info"> <span>Address:</span> 1010 Karatina, Kenya<br />
+            <span>Telephone:</span> +254 7128 6097<br />
+            <span>Others:</span> +254 - 1101 - 1111<br />
+            <span>E-mail:</span> <a href="mailto:derickokengodigital@gmail.com">derickokengodigital@gmail.com</a> </p>
+      </div>
+      <div class="clr"></div>
+
+  </div>
+  <div class="footer text-center">
+    <div class="footer_resize">
+      <p class="lf">Copyright &copy; <a href="#">My Health</a>. All Rights Reserved</p>
+      <p class="rf">Design by <a target="_blank" href="https://github.com/itsregalo">itsregalo</a></p>
+      <div style="clear:both;"></div>
     </div>
-    <!--/.Call to action-->
-
-    <hr class="my-4">
-
-    <!-- Social icons -->
-    <div class="pb-4">
-      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-        <i class="fab fa-facebook-f mr-3"></i>
-      </a>
-
-      <a href="https://twitter.com/MDBootstrap" target="_blank">
-        <i class="fab fa-twitter mr-3"></i>
-      </a>
-
-      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-        <i class="fab fa-youtube mr-3"></i>
-      </a>
-
-      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-        <i class="fab fa-google-plus-g mr-3"></i>
-      </a>
-
-      <a href="https://dribbble.com/mdbootstrap" target="_blank">
-        <i class="fab fa-dribbble mr-3"></i>
-      </a>
-
-      <a href="https://pinterest.com/mdbootstrap" target="_blank">
-        <i class="fab fa-pinterest mr-3"></i>
-      </a>
-
-      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-        <i class="fab fa-github mr-3"></i>
-      </a>
-
-      <a href="http://codepen.io/mdbootstrap/" target="_blank">
-        <i class="fab fa-codepen mr-3"></i>
-      </a>
+  </div>
+</div>
     </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-      © 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
-    </div>
-    <!--/.Copyright-->
-
   </footer>
+
+
 
 <script src="{% static 'bootstrap/js/main.js' %}"></script>
 <script type="text/javascript" src="{% static 'bootstrap/js/jquery-3.4.1.min.js' %}"></script>

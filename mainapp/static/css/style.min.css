@@ -1,19 +1,5 @@
 .card-comments img{width:4rem}
 
-.mainbar {
-    margin:0;
-    padding:0;
-    float: left;
-    /* width: 620px; */
-    margin-bottom:0;
-	padding-bottom:8px;
-	font-size:30px;
-	line-height:1.2em;
-	color:#353c3e;
-    background:url({% static '/images/dash.gif' %}) repeat-x left bottom;
-    width: auto;
-}
-
 
 .sidebar {
     padding:0;
@@ -32,4 +18,15 @@
 	text-decoration:none;
 	margin-left:-16px;
 	padding:4px 8px 4px 16px;
+}
+
+.c1{
+	padding:0 16px 0 0;
+	width:280px;
+}
+
+.pages{
+	color:#fff;
+	background:#58a1b3;
+	border:1px solid #58a1b3;
 }

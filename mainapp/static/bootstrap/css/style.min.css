@@ -94,6 +94,117 @@
   to {opacity: 1}
 }
 
+
 body {
-    background-color:#717171;
+    background-color:#fdfafa;
+}
+
+.logo {
+	padding:0;
+	float:left;
+	width:auto;
+}
+
+p.pages span, p.pages a:hover {
+	color:#fff;
+	background:#58a1b3;
+	border:1px solid #58a1b3;
+}
+
+p.pages a {
+	color:#929292;
+	border:1px solid transparent;
+}
+
+p.pages small {
+	font-size:12px;
+	float:right;
+}
+
+p.pages {
+	margin:0;
+	padding:24px 0;
+	font-size:11px;
+	color:#929292;
+	text-align:left;
+	background:repeat-x left top;
+}
+
+p.pages span, p.pages a {
+	padding:8px 12px;
+	text-decoration:none;
+}
+
+.sidebar .gadget {
+	margin:0 0 12px;
+	padding:12px 20px 24px 0;
+}
+
+ul.sb_menu, ul.ex_menu {
+	margin:0;
+	padding:0;
+	list-style:none;
+	color:#959595;
+}
+
+ul.s_list {
+  margin:0;
+	padding:0;
+	list-style:none;
+	color:#959595;
+}
+
+.s_list {
+  margin:0;
+  padding:0;
+  list-style:none;
+  color:#959595;
+  text-decoration:none;
+  margin-left:-16px;
+  padding:4px 8px 4px 16px;
+}
+
+.clr {
+	clear:both;
+	padding:0;
+	margin:0;
+	width:100%;
+	font-size:0;
+	line-height:0;
+}
+
+p.infopost a {
+	padding:0 2px;
+	color:#6e6e6e;
+	text-decoration:underline;
+}
+
+p.infopost {
+	margin-bottom:8px;
+	padding:6px 0 6px 12px;
+	color:#6e6e6e;
+	background:#fff;
+	border:1px solid #f2f2f2;
+}
+
+p.infopost a.com {
+	display:block;
+	float:right;
+	margin:-10px 0;
+	padding:10px 0 0;
+	width:106px;
+	height:28px;
+	font-weight:normal;
+	text-decoration:none;
+	color:#fff;
+	font-size:30px;
+	text-align:center;
+	background:url(../images/comment.gif) no-repeat left top;
+}
+
+p.infopost a.com:hover {
+	text-decoration:none;
+}
+p.infopost a.com span {
+	font-weight:normal;
 }
