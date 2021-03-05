@@ -5,8 +5,7 @@ from .views import (IndexView,
                     SupportView,
                     AboutView,
                     ContactView, 
-                    PaypallCheckout,
-                    ModView,     
+                    PaypallCheckout,    
                     )
 
 
@@ -19,6 +18,5 @@ urlpatterns = [
   path('support/', SupportView, name="support"),
   path('support/checkout/',PaypallCheckout, name='paypall'),
   path('contact/', ContactView, name='contact'),
-  path('about/', AboutView, name="about"),
-  path('index2/', ModView, name="index2"), 
+  path('about/', AboutView, name="about"), 
 ]
