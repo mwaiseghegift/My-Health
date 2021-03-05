@@ -1,64 +1,67 @@
 {% extends 'base.html' %}
-
 {% load static %}
+
 
 {% block title %}
   Home
 {% endblock title %}
   
+
+
 {% block body %}
-  
-<div class="content">
-  <div class="content_resize">
-    <div class="mainbar">
 
-      
-      {% for object in page_obj %}
-        <div class="article">
-          <h2><span>{{ object.title }}</span></h2>
-          <p class="infopost">Posted <span class="date">on {{ object.pub_date.day }} {{ object.pub_date|date:'M' }} {{ object.pub_date.year }}</span> by <a href="#">{{ object.user.username }}</a> &nbsp;&nbsp;|&nbsp;&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a> <a href="#" class="com"><span>11</span></a></p>
-          <div class="clr"></div>
-          <div class="img"><img src="{{ object.image_thumbnail.url }}" width="620" height="154" alt="" class="fl" /></div>
-          <div class="post_content">
-            <p>{{ object.content|safe|truncatewords:100 }}</p>
-            <p class="spec"><a href="{% url 'mainapp:blog-detail' object.slug %}" class="rm">more...</a></p>
-          </div>
-          <div class="clr"></div>
-        </div>
-      {% endfor %}
-        
-
-      
-      <p class="pages">
-        <small>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</small> 
-        {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
-        {% endif %}
-
-        
-        {% for num in page_obj.paginator.page_range %}
-          
-          {% if page_obj.number == num %}
-            <a href="?page={{ num }}"><span>{{ num }}</span></a>
-          {% endif %}
+    <!-- row starts -->
+      <div class="col-md-8">
+          <div class="mainbar">
             
-        {% endfor %}
+            {% for object in page_obj %}
+            <div class="article">
+              <h2><span>{{ object.title }}</span></h2>
+              <p class="infopost">Posted <span class="date">on {{ object.pub_date.day }} {{ object.pub_date|date:'M' }} {{ object.pub_date.year }}</span> by <a href="#">{{ object.user.username }}</a> &nbsp;&nbsp;|&nbsp;&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a> <a href="#" class="com"><span>{{ object.id }}</span></a></p>
+              <div class="clr"></div>
+              <div class="img"><img src="{{ object.image_thumbnail.url }}" width="100%" alt="" class="fl" /></div>
+              <div class="post_content">
+                <p>{{ object.content|safe|truncatewords:100 }}</p>
+                <p class="spec"><a href="{% url 'mainapp:blog-detail' object.slug %}" class="rm">more...</a></p>
+              </div>
+              <div class="clr"></div>
+            </div>
+          {% endfor %}
+              
+              <div class="clr"></div>
+              </div>
+              <p class="pages">
+                <p class="pages">
+                  <small>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</small> 
+                  {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                  {% endif %}
           
+                  
+                  {% for num in page_obj.paginator.page_range %}
+                    
+                    {% if page_obj.number == num %}
+                      <a href="?page={{ num }}"><span>{{ num }}</span></a>
+                    {% endif %}
+                      
+                  {% endfor %}
+                    
+          
+                  {% if page_obj.has_next %} 
+                      <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                  {% endif %} 
+                   {% if page_obj.has_next %} 
+                      <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                   {% endif %}
+                </p>
+              </p>
+            </div>
 
-        {% if page_obj.has_next %} 
-            <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
-        {% endif %} 
-         {% if page_obj.has_next %} 
-            <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
-         {% endif %}
-      </p>
-    </div>
-    
-    {% include 'sidebar.html' %}
-
-    <div class="clr"></div>
-  </div>
-</div>
+            {% include 'sidebar.html' %}
 
 {% endblock body %}
   
+
+
+
+ 

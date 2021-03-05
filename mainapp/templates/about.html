@@ -8,33 +8,36 @@
 
 {% block body %}
   
-<div class="content">
-  <div class="content_resize">
-    <div class="mainbar">
+<div class="col-md-8">
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        
+        {% for object in about %}
+          
+  
+          
+        <div class="article">
+          <h2><span>About</span> My Health</h2>
+          <div class="clr"></div>
+          <p>{{ object.about | safe }}</p>
+        </div>
+        <div class="article">
+          <h2><span>Our</span> Mission</h2>
+          <div class="clr"></div>
+          <p>{{ object.mission | safe }}</p>
+        </div>
+  
+        {% endfor %}
+      </div>
       
-      {% for object in about %}
-        
-
-        
-      <div class="article">
-        <h2><span>About</span> My Health</h2>
-        <div class="clr"></div>
-        <p>{{ object.about | safe }}</p>
-      </div>
-      <div class="article">
-        <h2><span>Our</span> Mission</h2>
-        <div class="clr"></div>
-        <p>{{ object.mission | safe }}</p>
-      </div>
-
-      {% endfor %}
+  
+  
+      <div class="clr"></div>
     </div>
-    
-    {% include 'sidebar.html' %}
-
-    <div class="clr"></div>
   </div>
 </div>
+{% include 'sidebar.html' %}
 
 {% endblock body %}
   

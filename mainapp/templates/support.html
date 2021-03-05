@@ -9,40 +9,44 @@
 
 {% block body %}
   
-<div class="content">
-  <div class="content_resize">
-    <div class="mainbar">
-      <div class="article">
-        <h2><span>Support to</span> My Health</h2>
-        <div class="clr"></div>
-        <p>
-          The gift that has been given to me says much about our capacity for great compassion and generosity, and I hope it sends an inspiring message to others about the importance of organ donation.
-          Read more at <a href="https://www.brainyquote.com/topics/donation-quotes">https://www.brainyquote.com/topics/donation-quotes</a>
-        </p>
-
-          <form id="amount-form" action="{% url 'mainapp:paypall' %}" method="POST">
-            {% csrf_token %}
-            <div class="donate">
-              <label class="donate-text" for="your_amount">Amount(USD): </label><br><br>
-              <input class="donate-input" id="amount" type="text" name="amount"><br><br>
-              <input  id="continue-donate" class="donate-button" type="submit" value="Continue">
-              
-            </div> 
-        </form>
-</div>
-
-      </div>
-    </div>
-
-    
-
-
-    
-    {% include 'sidebar.html' %}
-
-    <div class="clr"></div>
+<div class="col-md-8">
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2><span>Support to</span> My Health</h2>
+          <div class="clr"></div>
+          <p>
+            The gift that has been given to me says much about our capacity for great compassion and generosity, and I hope it sends an inspiring message to others about the importance of organ donation.
+            Read more at <a href="https://www.brainyquote.com/topics/donation-quotes">https://www.brainyquote.com/topics/donation-quotes</a>
+          </p>
+  
+            <form id="amount-form" action="{% url 'mainapp:paypall' %}" method="POST">
+              {% csrf_token %}
+              <div class="donate">
+                <label class="donate-text" for="your_amount">Amount(USD): </label><br><br>
+                <input class="donate-input" id="amount" type="text" name="amount"><br><br>
+                <input  id="continue-donate" class="donate-button" type="submit" value="Continue">
+                
+              </div> 
+          </form>
   </div>
+  
+        </div>
+      </div>
+  
+      
+  
+  
+      
+ 
+  
+      <div class="clr"></div>
+    </div>
+  </div>
+  {% include 'sidebar.html' %}
 </div>
+
 <script type="text/javascript">
 
 

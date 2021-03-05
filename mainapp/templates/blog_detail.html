@@ -11,23 +11,30 @@
 
 {% block body %}
   
-<div class="content">
-  <div class="content_resize">
-    <div class="mainbar">
-      <div class="article">
-        <h2><span>{{ post.title }}</span></h2>
+  <div class="col-md-8">
+    <div class="content">
+      <div class="content_resize">
+        <div class="mainbar">
+          <div class="article">
+            <h2><span>{{ post.title }}</span></h2>
+            <div class="clr"></div>
+            
+            <div class="img"><img src="{{ post.image_thumbnail.url }}" width="100%" alt="" class="fl" /></div>
+            <br><br>
+            <div class="clr"></div>
+            <p>Posted by <a href="#">{{ post.user.username }}</a> <span>&nbsp;&bull;&nbsp;</span> Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
+            <p>{{ post.content|safe }}</p>
+            <p><a href="#"><strong></strong></a> <span>&nbsp;&bull;&nbsp;</span> {{ post.pub_date|date:'M' }} {{ post.pub_date.day }}, {{ post.pub_date.year }} <span>&nbsp;&bull;&nbsp;</span> <a href="#"><strong><a href=""></a></strong></a></p>
+          </div>
+        </div>
+        
+  
+    
         <div class="clr"></div>
-        <p>Posted by <a href="#">{{ post.user.username }}</a> <span>&nbsp;&bull;&nbsp;</span> Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
-        <p>{{ post.content|safe }}</p>
-        <p><a href="#"><strong></strong></a> <span>&nbsp;&bull;&nbsp;</span> {{ post.pub_date|date:'M' }} {{ post.pub_date.day }}, {{ post.pub_date.year }} <span>&nbsp;&bull;&nbsp;</span> <a href="#"><strong><a href=""></a></strong></a></p>
       </div>
     </div>
-    
-    {% include 'sidebar.html' %}
-
-    <div class="clr"></div>
   </div>
-</div>
+  {% include 'sidebar.html' %}
 
 {% endblock body %}
 

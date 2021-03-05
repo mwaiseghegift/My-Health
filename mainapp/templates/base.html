@@ -1,4 +1,5 @@
 {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +10,7 @@
     <link href="{% static 'bootstrap/css/mdb.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/style.min.css' %}">
-    <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
     <title>My Health | {% block title %}{% endblock title %}</title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -23,8 +22,8 @@
           <div class="container">
     
             <!-- Brand -->
-            <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-              <strong class="blue-text">MDB</strong>
+            <a class="navbar-brand waves-effect" href="{% url 'mainapp:index' %}" target="_blank">
+              <strong class="blue-text logo">My Health</strong>
             </a>
     
             <!-- Collapse -->
@@ -39,20 +38,19 @@
               <!-- Left -->
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link waves-effect" href="#">Home
+                  <a class="nav-link waves-effect" href="{% url 'mainapp:index' %}">Home
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+                  <a class="nav-link waves-effect" href="{% url 'mainapp:about' %}" target="_blank">About MyHealth</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-                    target="_blank">Free download</a>
+                  <a class="nav-link waves-effect" href="{% url 'mainapp:blog-list' %}"
+                    target="_blank">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
-                    tutorials</a>
+                  <a class="nav-link waves-effect" href="{% url 'mainapp:contact' %}" target="_blank">Contact Us</a>
                 </li>
               </ul>
     
@@ -69,9 +67,9 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
+                  <a href="{% url 'mainapp:support' %}" class="nav-link border border-light rounded waves-effect"
                     target="_blank">
-                    <i class="fab fa-github mr-2"></i>MDB GitHub
+                    <i class="fab fa-github mr-2"></i>DONATE
                   </a>
                 </li>
               </ul>
@@ -83,7 +81,7 @@
         <!-- Navbar -->
     
       </header>
-
+      <br><br>
     <div class="container">
           <!-- Slideshow container -->
         <div class="slideshow-container">
@@ -133,70 +131,76 @@
             </div>
 </div>
 
-      <div class="clr"></div>
-      </div>
-      <div class="clr"></div>
-    </div>
-  </div>
-
-  
 <div class="container">
-  {% block body %}
+  <div class="row">
+    
+    {% block body %}
       
-  {% endblock body %}
-</div>
+    {% endblock body %}
       
-
-
-  <div class="fbg col-md-12 col-sm-12">
-    <div class="fbg_resize">
-        <div class="col c1">
-            <h2><span>Image</span> Gallery</h2>
-            
-            {% for object in footer_gallery %}
-            <a href="#"><img src="{{ object.image_thumbnail.url }}" width="75                                                                                                                                               " height="75" alt="" class="gal" /></a> 
-            {% endfor %}
-            
-                
-        </div>
-      <div class="col c2">
-        <h2><span>Services</span> Overview</h2>
-            <p>My Health Record brings together health information from healthcare providers across the sector, allowing important patient information to be shared between them.</p>
-        <ul class="fbg_ul">
-          <li><a href="#">Consultation.</a></li>
-          <li><a href="#">Health Advice.</a></li>
-          <li><a href="#">Reference.</a></li>
-        </ul>                                                                                                                     
-      </div>                                                                  
-      <div class="col c3">                
-        <h2><span>Contact</span> Us</h2>
-            <p>You can reach My Health staff through the following.</p>                                     
-            <p class="contact_info"> <span>Address:</span> 1010 Karatina, Kenya<br />
-            <span>Telephone:</span> +254 7128 6097<br />
-            <span>Others:</span> +254 - 1101 - 1111<br />
-            <span>E-mail:</span> <a href="mailto:derickokengodigital@gmail.com">derickokengodigital@gmail.com</a> </p>
-      </div>
-      <div class="clr"></div>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="footer_resize">
-      <p class="lf">Copyright &copy; <a href="#">My Health</a>. All Rights Reserved</p>
-      <p class="rf">Design by <a target="_blank" href="https://github.com/itsregalo">itsregalo</a></p>
-      <div style="clear:both;"></div>
-    </div>
   </div>
 </div>
+          
+    
 
-    <!-- Include the PayPal JavaScript SDK -->
 
-<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+<footer class="page-footer font-small mdb-color darken-2 mt-4 wow fadeIn">
+  <div class="container">
+    <div class="row">
+
+      <div class="col c1">
+        <h2><span>Image</span> Gallery</h2>
+        
+        {% for object in footer_gallery %}
+        <a href="#"><img src="{{ object.image_thumbnail.url }}" width="75" alt="" class="gal" /></a> 
+        {% endfor %}
+        
+            
+    </div>
+
+    <div class="col-md-4">
+      <h2><span>Services</span> Overview</h2>
+          <p>My Health Record brings together health information from healthcare providers across the sector, allowing important patient information to be shared between them.</p>
+      <ul class="fbg_ul">
+        <li><a href="#">Consultation.</a></li>
+        <li><a href="#">Health Advice.</a></li>
+        <li><a href="#">Reference.</a></li>
+      </ul>
+    </div>
+
+    <div class="col-md-4">
+      <h2><span>Contact</span> Us</h2>
+          <p>You can reach My Health staff through the following.</p>
+          <p class="contact_info"> <span>Address:</span> 1010 Karatina, Kenya<br />
+          <span>Telephone:</span> +254 7128 6097<br />
+          <span>Others:</span> +254 - 1101 - 1111<br />
+          <span>E-mail:</span> <a href="mailto:derickokengodigital@gmail.com">derickokengodigital@gmail.com</a> </p>
+    </div>
+    <div class="clr"></div>
+
+</div>
+<div class="footer text-center">
+  <div class="footer_resize">
+    <p class="lf">Copyright &copy; <a href="#">My Health</a>. All Rights Reserved</p>
+    <p class="rf">Design by <a target="_blank" href="https://github.com/itsregalo">itsregalo</a></p>
+    <div style="clear:both;"></div>
+  </div>
+</div>
+</div>
+  </div>
+</footer>
+
+
+
 <script src="{% static 'bootstrap/js/main.js' %}"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=AZAryyw_xw_-WevEOHEYurfeurmWV6kCpSiMgjtTOzcFhMYA_exRPEAYbQgxpWeeos2_sgjCMFbZ6fRn&currency=USD"></script>
-<script type="text/javascript" src="{% static 'js/cufon-yui.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/cufon-georgia.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
-
+<script type="text/javascript" src="{% static 'bootstrap/js/jquery-3.4.1.min.js' %}"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'bootstrap/js/popper.min.js' %}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'bootstrap/js/mdb.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
