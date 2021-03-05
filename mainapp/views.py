@@ -27,7 +27,7 @@ def IndexView(request, *args, **kwargs):
         'page_obj':page_obj,
         'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6]
     }
-    return render(request, 'index.html', context)
+    return render(request, 'index2.html', context)
 
 def BlogView(request, *args, **kwargs):
     posts = Blog.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date') 
@@ -87,8 +87,6 @@ def PaypallCheckout(request, *args, **kwargs):
     context = {
         'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
-
-    
     return render(request, 'paypall.html', context)
 
 def AboutView(request, *args, **kwargs):
@@ -104,4 +102,24 @@ def ContactView(request, *args, **kwargs):
     }
     return render(request, 'contact.html', context)
 
+def ModView(request, *args, **kwargs):
+    posts = Blog.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date') 
+    
+    query = request.GET.get('q',None)
+    
+    if query is not None:
+        posts = Blog.objects.filter(Q(title__icontains=query)|
+                                    Q(description__icontains=query)
+                                    )
+    
+    paginator = Paginator(posts, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    context = {
+        'page_obj':page_obj,
+        'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6]
+    }
+    
+    return render(request, 'index2.html', {})
 

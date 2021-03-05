@@ -1,63 +1,160 @@
 {% load static %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>My Health | {% block title %}{% endblock title %}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="{% static 'css/coin-slider.css' %}" />
-<link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'bootstrap/css/mdb.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/style.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
+    <title>My Health | {% block title %}{% endblock title %}</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-<div class="main">
-  <div class="header">
-    <div class="header_resize">
-      <div class="logo">
-        <h1><a href="{% url 'mainapp:index' %}"><span>My Health</span> <small>Company Slogan Here</small></a></h1>
-      </div>
-      <div class="menu_nav">
-        <ul>
-          <li class="active"><a href="{% url 'mainapp:index' %}"><span>Home Page</span></a></li>
-          <li><a href="{% url 'mainapp:support' %}"><span>Support</span></a></li>
-          <li><a href="{% url 'mainapp:about' %}"><span>About Us</span></a></li>
-          <li><a href="{% url 'mainapp:blog-list' %}"><span>Blog</span></a></li>
-          <li><a href="{% url 'mainapp:contact' %}"><span>Contact Us</span></a></li>
-        </ul>
-      </div>
+
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light mdb-color scrolling-navbar">
+          <div class="container">
+    
+            <!-- Brand -->
+            <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+              <strong class="blue-text">MDB</strong>
+            </a>
+    
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+              <!-- Left -->
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link waves-effect" href="#">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+                    target="_blank">Free download</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
+                    tutorials</a>
+                </li>
+              </ul>
+    
+              <!-- Right -->
+              <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                  <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
+                    target="_blank">
+                    <i class="fab fa-github mr-2"></i>MDB GitHub
+                  </a>
+                </li>
+              </ul>
+    
+            </div>
+    
+          </div>
+        </nav>
+        <!-- Navbar -->
+    
+      </header>
+
+    <div class="container">
+          <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+                <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                    <img src="{% static 'images/slide1.jpg' %}" style="width:100%">
+                <div class="text">The art of healing comes from nature, not from the physician. Therefore the physician must start from nature, with an open mind</div>
+            </div>
+            
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                    <img src="{% static 'images/slide2.jpg' %}" style="width:100%">
+                <div class="text">I am the Doctor of Democracy. I am America's 
+                    Truth Detector. And as the Doctor of Democracy, 
+                    the deal you have with your doctor isn't changing. 
+                    You get to keep your doctor. You get to keep your plan. 
+                    You get to keep your station. Nothing's changing, 
+                    and it really never was gonna change.</div>
+            </div>
+            
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="{% static 'images/slide3.jpg' %}" style="width:100%">
+                <div class="text">Of course it's hard. “No pain, no gain. 
+                    “Your body can stand almost anything. 
+                    “Success isn't always about greatness. 
+                    “Train insane or remain the same.” 
+                    “Definition of a really good workout: 
+                    when you hate doing it, but you love finishing it.” 
+                    “Push yourself because no one else is going to do it for you.” 
+                    “Suck it up.</div>
+            </div>
+            
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+            <br>
+            
+            <!-- The dots/circles -->
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+</div>
+
       <div class="clr"></div>
-      <div class="slider">
-        <div id="coin-slider"> 
-            <a href="#"><img src="{% static 'images/slide1.jpg' %}" width="960" height="360" alt="" />
-                <span><big>The art of healing</big><br />
-                  The art of healing comes from nature, not from the physician. Therefore the physician must start from nature, with an open mind
-                  </span></a> 
-                    <a href="#"><img src="{% static 'images/slide2.jpg' %}" width="960" height="360" alt="" />
-                      <span><big>Doctor of Democracy</big><br />
-                        I am the Doctor of Democracy. I am America's Truth Detector. And as the Doctor of Democracy, the deal you have with your doctor isn't changing. You get to keep your doctor. You get to keep your plan. You get to keep your station. Nothing's changing, and it really never was gonna change.
-                      </span></a> 
-                    <a href="#"><img src="{% static 'images/slide3.jpg' %}" width="960" height="360" alt="" />
-                      <span><big>Of Course its Hard</big><br />
-                        Of course it's hard. “No pain, no gain. “Your body can stand almost anything. “Success isn't always about greatness. “Train insane or remain the same.” “Definition of a really good workout: when you hate doing it, but you love finishing it.” “Push yourself because no one else is going to do it for you.” “Suck it up.</span></a> </div>
-        <div class="clr"></div>
       </div>
       <div class="clr"></div>
     </div>
   </div>
 
   
+<div class="container">
   {% block body %}
       
   {% endblock body %}
+</div>
       
 
 
-  <div class="fbg">
+  <div class="fbg col-md-12 col-sm-12">
     <div class="fbg_resize">
         <div class="col c1">
             <h2><span>Image</span> Gallery</h2>
             
             {% for object in footer_gallery %}
-            <a href="#"><img src="{{ object.image_thumbnail.url }}" width="75" height="75" alt="" class="gal" /></a> 
+            <a href="#"><img src="{{ object.image_thumbnail.url }}" width="100%" alt="" class="gal" /></a> 
             {% endfor %}
             
                 
@@ -90,15 +187,16 @@
     </div>
   </div>
 </div>
+
     <!-- Include the PayPal JavaScript SDK -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AZAryyw_xw_-WevEOHEYurfeurmWV6kCpSiMgjtTOzcFhMYA_exRPEAYbQgxpWeeos2_sgjCMFbZ6fRn&currency=USD"></script>
 
-
- 
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/main.js' %}"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AZAryyw_xw_-WevEOHEYurfeurmWV6kCpSiMgjtTOzcFhMYA_exRPEAYbQgxpWeeos2_sgjCMFbZ6fRn&currency=USD"></script>
 <script type="text/javascript" src="{% static 'js/cufon-yui.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/cufon-georgia.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/coin-slider.min.js' %}"></script>
+
 </body>
 </html>

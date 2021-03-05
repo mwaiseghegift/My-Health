@@ -8,7 +8,7 @@
   
 {% block body %}
   
-<div class="content">
+<div class="content col-md-7">
   <div class="content_resize">
     <div class="mainbar">
 
@@ -18,7 +18,7 @@
           <h2><span>{{ object.title }}</span></h2>
           <p class="infopost">Posted <span class="date">on {{ object.pub_date.day }} {{ object.pub_date|date:'M' }} {{ object.pub_date.year }}</span> by <a href="#">{{ object.user.username }}</a> &nbsp;&nbsp;|&nbsp;&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a> <a href="#" class="com"><span>{{ object.id }}</span></a></p>
           <div class="clr"></div>
-          <div class="img"><img src="{{ object.image_thumbnail.url }}" width="620" height="154" alt="" class="fl" /></div>
+          <div class="img"><img src="{{ object.image_thumbnail.url }}" width="100%" alt="" class="fl" /></div>
           <div class="post_content">
             <p>{{ object.content|safe|truncatewords:100 }}</p>
             <p class="spec"><a href="{% url 'mainapp:blog-detail' object.slug %}" class="rm">more...</a></p>
@@ -54,7 +54,9 @@
       </p>
     </div>
     
-    {% include 'sidebar.html' %}
+    <div class="col-md-4">
+      {% include 'sidebar.html' %}
+    </div>
 
     <div class="clr"></div>
   </div>

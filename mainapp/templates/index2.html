@@ -1,0 +1,277 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'bootstrap/css/mdb.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/style.min.css' %}">
+    <title>Blog</title>
+</head>
+
+<body>
+
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light mdb-color scrolling-navbar">
+          <div class="container">
+    
+            <!-- Brand -->
+            <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+              <strong class="blue-text">MDB</strong>
+            </a>
+    
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+              <!-- Left -->
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link waves-effect" href="#">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+                    target="_blank">Free download</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
+                    tutorials</a>
+                </li>
+              </ul>
+    
+              <!-- Right -->
+              <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                  <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
+                    target="_blank">
+                    <i class="fab fa-github mr-2"></i>MDB GitHub
+                  </a>
+                </li>
+              </ul>
+    
+            </div>
+    
+          </div>
+        </nav>
+        <!-- Navbar -->
+    
+      </header>
+
+    <div class="container">
+          <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+                <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                    <img src="{% static 'images/slide1.jpg' %}" style="width:100%">
+                <div class="text">The art of healing comes from nature, not from the physician. Therefore the physician must start from nature, with an open mind</div>
+            </div>
+            
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                    <img src="{% static 'images/slide2.jpg' %}" style="width:100%">
+                <div class="text">I am the Doctor of Democracy. I am America's 
+                    Truth Detector. And as the Doctor of Democracy, 
+                    the deal you have with your doctor isn't changing. 
+                    You get to keep your doctor. You get to keep your plan. 
+                    You get to keep your station. Nothing's changing, 
+                    and it really never was gonna change.</div>
+            </div>
+            
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="{% static 'images/slide3.jpg' %}" style="width:100%">
+                <div class="text">Of course it's hard. “No pain, no gain. 
+                    “Your body can stand almost anything. 
+                    “Success isn't always about greatness. 
+                    “Train insane or remain the same.” 
+                    “Definition of a really good workout: 
+                    when you hate doing it, but you love finishing it.” 
+                    “Push yourself because no one else is going to do it for you.” 
+                    “Suck it up.</div>
+            </div>
+            
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+            <br>
+            
+            <!-- The dots/circles -->
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="mainbar">
+              
+              {% for object in page_obj %}
+              <div class="article">
+                <h2><span>{{ object.title }}</span></h2>
+                <p class="infopost">Posted <span class="date">on {{ object.pub_date.day }} {{ object.pub_date|date:'M' }} {{ object.pub_date.year }}</span> by <a href="#">{{ object.user.username }}</a> &nbsp;&nbsp;|&nbsp;&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a> <a href="#" class="com"><span>{{ object.id }}</span></a></p>
+                <div class="clr"></div>
+                <div class="img"><img src="{{ object.image_thumbnail.url }}" width="100%" alt="" class="fl" /></div>
+                <div class="post_content">
+                  <p>{{ object.content|safe|truncatewords:100 }}</p>
+                  <p class="spec"><a href="{% url 'mainapp:blog-detail' object.slug %}" class="rm">more...</a></p>
+                </div>
+                <div class="clr"></div>
+              </div>
+            {% endfor %}
+                
+                <div class="clr"></div>
+                </div>
+                <p class="pages"><small>Page 1 of 2</small> <span>1</span> <a href="#">2</a> <a href="#">&raquo;</a></p>
+              </div>
+
+        <div class="col-md-4">
+            <div class="sidebar">
+                <div class="searchform">
+                  <form id="formsearch" name="formsearch" method="post" action="#">
+                    <input type="search" name="post_search" id="" >
+                    <button type="submit" >Search</button>
+                  </form>
+                </div>
+                <div class="clr"></div>
+                <div class="gadget">
+                  <h2 class="star"><span>Sidebar</span> Menu</h2>
+                  <div class="clr"></div>
+                  <ul class="s_list">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">TemplateInfo</a></li>
+                    <li><a href="#">Style Demo</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Archives</a></li>
+                    <li><a href="#">Web Templates</a></li>
+                  </ul>
+                </div>
+                <div class="gadget">
+                  <h2 class="star"><span>Sponsors</span></h2>
+                  <div class="clr"></div>
+                  <ul class="ex_menu">
+                    <li><a href="#">Lorem ipsum dolor</a><br />
+                      Donec libero. Suspendisse bibendum</li>
+                    <li><a href="#">Dui pede condimentum</a><br />
+                      Phasellus suscipit, leo a pharetra</li>
+                    <li><a href="#">Condimentum lorem</a><br />
+                      Tellus eleifend magna eget</li>
+                    <li><a href="#">Fringilla velit magna</a><br />
+                      Curabitur vel urna in tristique</li>
+                    <li><a href="#">Suspendisse bibendum</a><br />
+                      Cras id urna orbi tincidunt orci ac</li>
+                    <li><a href="#">Donec mattis</a><br />
+                      purus nec placerat bibendum</li>
+                  </ul>
+                </div>
+              </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<footer class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn">
+
+    <!--Call to action-->
+    <div class="pt-4">
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
+        role="button">Download MDB
+        <i class="fas fa-download ml-2"></i>
+      </a>
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
+        free tutorial
+        <i class="fas fa-graduation-cap ml-2"></i>
+      </a>
+    </div>
+    <!--/.Call to action-->
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="https://twitter.com/MDBootstrap" target="_blank">
+        <i class="fab fa-twitter mr-3"></i>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+        <i class="fab fa-youtube mr-3"></i>
+      </a>
+
+      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+        <i class="fab fa-google-plus-g mr-3"></i>
+      </a>
+
+      <a href="https://dribbble.com/mdbootstrap" target="_blank">
+        <i class="fab fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="https://pinterest.com/mdbootstrap" target="_blank">
+        <i class="fab fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+        <i class="fab fa-github mr-3"></i>
+      </a>
+
+      <a href="http://codepen.io/mdbootstrap/" target="_blank">
+        <i class="fab fa-codepen mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      © 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+
+<script src="{% static 'bootstrap/js/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/jquery-3.4.1.min.js' %}"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'bootstrap/js/popper.min.js' %}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'bootstrap/js/mdb.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

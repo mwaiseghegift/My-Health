@@ -1,20 +1,7 @@
 /* Design by http://www.dreamtemplate.com */
 @charset "utf-8";
-body {
-	margin:0;
-	padding:0;
-	width:100%;
-	color:#6e6e6e;
-	font:normal 12px/1.5em "Liberation sans", Arial, Helvetica, sans-serif;
-	background:#f8f8f8 url(../images/main_bg.gif) repeat-x left top;
-}
-html, .main {
-	padding:0;
-	margin:0;
-}
-.main {
-	background:url(../images/header_bg.gif) repeat-x left 554px;
-}
+
+
 .clr {
 	clear:both;
 	padding:0;
@@ -38,17 +25,7 @@ a {
 	color:#58a1b3;
 	text-decoration:underline;
 }
-.header, .content, .menu_nav, .fbg, .footer, form, ol, ol li, ul, .content .mainbar, .content .sidebar {
-	margin:0;
-	padding:0;
-}
-.header {
-}
-.header_resize {
-	margin:0 auto;
-	padding:0;
-	width:960px;
-}
+
 .logo {
 	padding:0;
 	float:left;
@@ -103,7 +80,7 @@ h1 small {
 .rss a:hover {
 	text-decoration:underline;
 }
-.rss img {
+.rss  {
 	margin:-3px 0 -3px 6px;
 	border:none;
 }
@@ -162,19 +139,11 @@ h1 small {
 	line-height:1.2em;
 	color:#353c3e;
 }
-.content .mainbar div.img {
+.content .mainbar div {
 	padding:12px 0 0;
 	float:left;
 }
-.content .mainbar img {
-}
-.content .mainbar img.fl {
-}
-.content .mainbar .article {
-	margin:0 0 32px;
-	padding:0 0 16px;
-	background:url(../images/dash.gif) repeat-x left bottom;
-}
+
 .content .mainbar .post_content {
 	float:right;
 	width:auto;
@@ -296,7 +265,7 @@ p.infopost a.com span {
 	margin:0;
 	padding:16px 0 0 0;
 }
-.content .mainbar .comment img.userpic {
+.content .mainbar .comment  {
 	border:1px solid #dedede;
 	margin:10px 16px 0 0;
 	padding:0;
@@ -316,7 +285,7 @@ p.infopost a.com span {
 	color:#868686;
 	padding-bottom:24px;
 }
-.fbg img.gal {
+.fbg  {
 	margin:0 8px 8px 0;
 	padding:0;
 	background-color:#fff;
@@ -496,4 +465,98 @@ a {
 
 .donate-input {
 	padding : 10px;
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
