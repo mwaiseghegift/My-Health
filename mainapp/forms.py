@@ -9,4 +9,4 @@ class AmountForm(forms.Form):
 class ContactForm(forms.Form):
     name = forms.CharField()
     Email = forms.EmailField()
-    Message = forms.TextField()  
+    Message = forms.TextInput()  
