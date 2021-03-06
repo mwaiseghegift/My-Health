@@ -47,6 +47,8 @@ def BlogView(request, *args, **kwargs):
         'page_obj':page_obj,
         'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
+    
+    return render(request, 'blog.html', context)
 
 def BlogDetailView(request, slug):
     post = get_object_or_404(Blog, slug=slug)

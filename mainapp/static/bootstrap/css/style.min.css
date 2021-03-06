@@ -103,6 +103,18 @@ body {
 	padding:0;
 	float:left;
 	width:auto;
+  font-weight: 500;
+  font-size:xx-large;
+  color:white;
+}
+
+.nav-text {
+  color:white;
+  font-size: x-large;
+  font-weight:300;
+  padding:0;
+  float:left;
+  padding-left: 20px;
 }
 
 p.pages span, p.pages a:hover {
@@ -208,3 +220,27 @@ p.infopost a.com:hover {
 p.infopost a.com span {
 	font-weight:normal;
 }
+
+.donate {
+	padding : 10px;
+  padding-bottom: 20px;
+	background-color:#49a2b8;
+	position: center;
+	text-align: center;
+}
+
+nav {
+  background-color:#49a2b8;
+}
+
+.slideshow-container .text {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+.logo {
+
+  }

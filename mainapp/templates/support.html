@@ -23,7 +23,7 @@
   
             <form id="amount-form" action="{% url 'mainapp:paypall' %}" method="POST">
               {% csrf_token %}
-              <div class="donate">
+              <div class="donate mdb-color">
                 <label class="donate-text" for="your_amount">Amount(USD): </label><br><br>
                 <input class="donate-input" id="amount" type="text" name="amount"><br><br>
                 <input  id="continue-donate" class="donate-button" type="submit" value="Continue">

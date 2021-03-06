@@ -10,6 +10,7 @@
     <link href="{% static 'bootstrap/css/mdb.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/style.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/x-icon">
     <title>My Health | {% block title %}{% endblock title %}</title>
 </head>
 
@@ -22,8 +23,8 @@
           <div class="container">
     
             <!-- Brand -->
-            <a class="navbar-brand waves-effect" href="{% url 'mainapp:index' %}" target="_blank">
-              <strong class="blue-text logo">My Health</strong>
+            <a class="navbar-brand waves-effect" href="{% url 'mainapp:index' %}" target="">
+              <strong class="logo">My Health</strong>
             </a>
     
             <!-- Collapse -->
@@ -37,20 +38,20 @@
     
               <!-- Left -->
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link waves-effect" href="{% url 'mainapp:index' %}">Home
+                <li class="nav-item">
+                  <a class="nav-text waves-effect" href="{% url 'mainapp:index' %}">Home
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link waves-effect" href="{% url 'mainapp:about' %}" target="_blank">About MyHealth</a>
+                  <a class="nav-text waves-effect" href="{% url 'mainapp:about' %}" target="">About MyHealth</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link waves-effect" href="{% url 'mainapp:blog-list' %}"
-                    target="_blank">Blog</a>
+                  <a class="nav-text waves-effect" href="{% url 'mainapp:blog-list' %}"
+                    target="">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link waves-effect" href="{% url 'mainapp:contact' %}" target="_blank">Contact Us</a>
+                  <a class="nav-text waves-effect" href="{% url 'mainapp:contact' %}" target="">Contact Us</a>
                 </li>
               </ul>
     
@@ -149,7 +150,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col c1">
+      <div class="col  c1">
         <h2><span>Image</span> Gallery</h2>
         
         {% for object in footer_gallery %}
@@ -195,11 +196,9 @@
 
 <script src="{% static 'bootstrap/js/main.js' %}"></script>
 <script type="text/javascript" src="{% static 'bootstrap/js/jquery-3.4.1.min.js' %}"></script>
-<!-- Bootstrap tooltips -->
+
 <script type="text/javascript" src="{% static 'bootstrap/js/popper.min.js' %}"></script>
-<!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-<!-- MDB core JavaScript -->
 <script type="text/javascript" src="{% static 'bootstrap/js/mdb.min.js' %}"></script>
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
