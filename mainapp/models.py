@@ -7,6 +7,7 @@ from imagekit.models import ImageSpecField
 from pilkit.processors import ResizeToFill
 
 from tinymce.models import HTMLField
+
 from django.utils import timezone 
 from django.utils.text import slugify
 

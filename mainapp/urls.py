@@ -5,7 +5,9 @@ from .views import (IndexView,
                     SupportView,
                     AboutView,
                     ContactView, 
-                    PaypallCheckout,    
+                    PaypallCheckout,
+                    getAccessToken,
+                    LipaNaMpesaOnline,    
                     )
 
 
@@ -18,5 +20,7 @@ urlpatterns = [
   path('support/', SupportView, name="support"),
   path('support/checkout/',PaypallCheckout, name='paypall'),
   path('contact/', ContactView, name='contact'),
-  path('about/', AboutView, name="about"), 
+  path('about/', AboutView, name="about"),
+  path('access/token/', getAccessToken, name="get_mpesa_access_token"),
+  path('online/lipa/', LipaNaMpesaOnline, name='lipa_na_mpesa'), 
 ]
