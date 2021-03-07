@@ -7,9 +7,15 @@ defusedxml==0.6.0
 Django==3.1.7
 django-allauth==0.44.0
 django-appconf==1.0.4
+django-filebrowser==3.13.2
+django-filter==2.4.0
+django-grappelli==2.14.3
 django-imagekit==4.0.2
+django-mpesa==1.3.4
 django-tinymce==3.2.0
+djangorestframework==3.12.2
 idna==2.10
+Markdown==3.3.4
 oauthlib==3.1.0
 pilkit==2.0
 Pillow==8.1.1
