@@ -72,15 +72,16 @@ def SupportView(request, *args, **kwargs):
     
     if request.method == 'POST':
         form = AmountForm(request.POST)
-        
+        print("Yes")
         if form.is_valid():
             amount = form.cleaned_data['amount']
             request.session['amount'] = amount
-            redirect('mainapp:paypall')
+            return HttpResponseRedirect('/support/checkout/')
                  
         else:
             form = AmountForm()
-        
+    else:
+        print(request.method)    
     
     context = {
         'amount':amount,
@@ -92,8 +93,8 @@ def SupportView(request, *args, **kwargs):
 def PaypallCheckout(request, *args, **kwargs):
     amount = request.session.get('amount')
     print(amount)
-    
     context = {
+        'amount':amount,
         'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
     return render(request, 'paypall.html', context)

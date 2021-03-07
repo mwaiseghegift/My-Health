@@ -7,7 +7,7 @@
     
 
 {% block body %}
-    <div class="col-md-8">
+    <div class="col">
         <div class="donate">
             <div id="payment-info">
                 <small>Payment Options</small>
@@ -21,15 +21,15 @@
 
     <script>
         // Render the PayPal button into #paypal-button-container
-        var amount = '{{ amount }}'
+        var donation = '{{amount}}'
         paypal.Buttons({
 
             // Set up the transaction
             createOrder: function(data, actions) {
                 return actions.order.create({
-                    purchase_units: [{
+                        purchase_units: [{
                         amount: {
-                            value: parseFloat(amount).toFixed(2)
+                            value: parseFloat(donation).toFixed(2)
                         }
                     }]
                 });
