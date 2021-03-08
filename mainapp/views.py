@@ -129,17 +129,17 @@ def LipaNaMpesaOnline(request):
     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
     headers = {"Authorization":"Bearer %s" % access_token}
     request = {
-        "BusinessShortCode":LipaNaMpesaPassword.business_short_code,
-        "Password":LipaNaMpesaPassword.decode_password,
-        "Timestamp":LipaNaMpesaPassword.lipa_time,
-        "TransactionType":"CustomerPayBillOnline",
-        "Amount":1,
-        "PartyA":254712860997,
-        "PartyB":LipaNaMpesaPassword.business_short_code,
-        "PhoneNumber":254712860997,
-        "CallBackUrl":"https://sandbox.safaricom.co.ke/mpesa/",
-        "AccountReference":"Gift",
-        "TransactionDesc":"Testing stk push"
+        "BusinessShortCode": "174379",
+        "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjAwMzA4MTI1MzIw",
+        "Timestamp": "20200308125320",
+        "TransactionType": "CustomerPayBillOnline",
+        "Amount": "5",
+        "PartyA": "254712860997",
+        "PartyB": "174379",
+        "PhoneNumber": "254712860997",
+        "CallBackURL": "https://myhealth.pythonanywhere.com/saf",
+        "AccountReference": "Felix Imekubali",
+        "TransactionDesc": "myhealth test"
     }
     response = requests.post(api_url, json=request, headers=headers)
     return HttpResponse('success')
