@@ -26,7 +26,10 @@ SECRET_KEY = '0(=jr@6-ktip2n3d6w)y-dh#&#pr(i+=9_8$lgtp#%k=t59(kg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+                'myhealthke.pythonanywhere.com',
+                 '127.0.0.1'
+                 ]
 
 SITE_ID=1
 # Application definition
