@@ -1,19 +1,64 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 
 {% block title %}
   Contact
 {% endblock title %}
-
+  
 
 {% block body %}
 
-<section class="form">
+  <section class="Form">
+    <div class="container">
+      <div class="row contact-form">
+        <div class="col-md-12 contact-h">
+          <h3>Contact Us</h3>
+        </div>
+        <div class="col-md-6">
+          <img src="{% static 'images/tech.jpg' %}" class="img-fluid" alt="">
+        </div>
+       <div class="col-md-6">
+         <form action="" method="post">
+           {% csrf_token %}
+           <div class="form-row">
+             <div class="col-lg-12 p-2">
+                <input type="text" name="name" class="form-control" id="" placeholder="Name">
+                {% for error in form.name.errors %}
+                  <small class=text-danger>{{ error }}</small>
+                {% endfor %}
+             </div>
+           </div>
   
-</section>  
+           <div class="form-row">
+            <div class="col-lg-12 p-2">
+               <input type="email" name="email" class="form-control" id="" placeholder="Email">
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="col-lg-12 p-2">
+               <input type="text" name="subject" class="form-control" id="" placeholder="Subject">
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <div class="col-lg-12 p-2">
+               <textarea type="message" rows="5" name="message" class="form-control" id="" placeholder="Message"></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-lg-12 p-2">
+               <button class="btn" type="submit">Send</button>
+            </div>
+          </div>
+         </form>
+       </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock body %}
+  
   
   

@@ -147,3 +147,5 @@ TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tinymce")
 
 FILEBROWSER_DIRECTORY = ''
 DIRECTORY = ''
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

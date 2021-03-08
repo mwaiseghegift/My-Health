@@ -281,3 +281,14 @@ nav {
   font-weight: bold;
   border: 1px solid;
 }
+
+.contact-form {
+  background-color: rgb(68, 77, 117);
+  padding: 20px
+}
+
+.contact-h {
+  color: white;
+  text-align: center;
+  padding: 3px
+}

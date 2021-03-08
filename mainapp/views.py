@@ -13,6 +13,8 @@ import json
 from .mpesa_credentials import MpesaAccessToken, LipaNaMpesaPassword
 from django.views.decorators.csrf import csrf_exempt
 
+from django.core.mail import send_mail
+
 
 # Create your views here.
 
@@ -133,7 +135,11 @@ def ContactView(request, *args, **kwargs):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            return redirect('/contact/')
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            send_mail(subject, message, email, ['itsregalo047@gmail.com'], fail_silently=False)
         
         else:
             form = ContactForm()
