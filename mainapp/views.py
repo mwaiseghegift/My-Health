@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.core.mail import send_mail, BadHeaderError
-from .forms import AmountForm
+from .forms import AmountForm, ContactForm
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 
 import requests
@@ -68,23 +68,46 @@ def BlogDetailView(request, slug):
 
 def SupportView(request, *args, **kwargs):
     
-    amount = ""    
+    amount = ""
+    telephone = ""    
     
     if request.method == 'POST':
         form = AmountForm(request.POST)
         print("Yes")
         if form.is_valid():
             amount = form.cleaned_data['amount']
+            telephone = form.cleaned_data['telephone']
+            print(amount)
+            print(telephone)
             request.session['amount'] = amount
+            
+            # access_token = MpesaAccessToken.validated_mpesa_access_token
+            # api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+            # headers = {"Authorization":"Bearer %s" % access_token}
+            # request = {
+            #     "BusinessShortCode": LipaNaMpesaPassword.business_short_code,
+            #     "Password": LipaNaMpesaPassword.decode_password,
+            #     "Timestamp": LipaNaMpesaPassword.lipa_time,
+            #     "TransactionType": "CustomerPayBillOnline",
+            #     "Amount": amount,
+            #     "PartyA": "254712860997",
+            #     "PartyB": "174379",
+            #     "PhoneNumber": "254712860997",
+            #     "CallBackURL": "https://myhealthke.pythonanywhere.com/saf",
+            #     "AccountReference": "MyHealth",
+            #     "TransactionDesc": "myhealth test"
+            # }
+            # response = requests.post(api_url, json=request, headers=headers)
             return HttpResponseRedirect('/support/checkout/')
                  
         else:
             form = AmountForm()
-    else:
-        print(request.method)    
+            
+
     
     context = {
         'amount':amount,
+        'telephone':telephone,
         'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
     
@@ -107,42 +130,52 @@ def AboutView(request, *args, **kwargs):
     return render(request, 'about.html', context)
 
 def ContactView(request, *args, **kwargs):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            return redirect('/contact/')
+        
+        else:
+            form = ContactForm()
+    
     context = {
         'footer_gallery': Gallery.objects.all().order_by('-date_upload')[:6],
     }
     return render(request, 'contact.html', context)
 
 def getAccessToken(request):
-    consumer_key = 'n9KbDodntGKwIpwrENmqwghaXk18WstU'
-    consumer_secret = 'TGxmOUSsa4FK4cuD'
-    api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+    pass
+#     consumer_key = 'n9KbDodntGKwIpwrENmqwghaXk18WstU'
+#     consumer_secret = 'TGxmOUSsa4FK4cuD'
+#     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
     
-    r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
-    mpesa_access_token = json.loads(r.text)
-    validated_mpesa_access_token = mpesa_access_token['access_token']
+#     r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+#     mpesa_access_token = json.loads(r.text)
+#     validated_mpesa_access_token = mpesa_access_token['access_token']
     
-    return HttpResponse(validated_mpesa_access_token)
+#     return HttpResponse(validated_mpesa_access_token)
 
 
 def LipaNaMpesaOnline(request):
-    access_token = MpesaAccessToken.validated_mpesa_access_token
-    api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-    headers = {"Authorization":"Bearer %s" % access_token}
-    request = {
-        "BusinessShortCode": "174379",
-        "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjAwMzA4MTI1MzIw",
-        "Timestamp": "20200308125320",
-        "TransactionType": "CustomerPayBillOnline",
-        "Amount": "5",
-        "PartyA": "254712860997",
-        "PartyB": "174379",
-        "PhoneNumber": "254712860997",
-        "CallBackURL": "https://myhealth.pythonanywhere.com/saf",
-        "AccountReference": "Felix Imekubali",
-        "TransactionDesc": "myhealth test"
-    }
-    response = requests.post(api_url, json=request, headers=headers)
-    return HttpResponse('success')
+    pass
+#     access_token = MpesaAccessToken.validated_mpesa_access_token
+#     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+#     headers = {"Authorization":"Bearer %s" % access_token}
+#     request = {
+#         "BusinessShortCode": LipaNaMpesaPassword.business_short_code,
+#         "Password": LipaNaMpesaPassword.decode_password,
+#         "Timestamp": LipaNaMpesaPassword.lipa_time,
+#         "TransactionType": "CustomerPayBillOnline",
+#         "Amount": "5",
+#         "PartyA": "254712860997",
+#         "PartyB": "174379",
+#         "PhoneNumber": "254712860997",
+#         "CallBackURL": "https://myhealthke.pythonanywhere.com/saf",
+#         "AccountReference": "Gift",
+#         "TransactionDesc": "myhealth test"
+#     }
+#     response = requests.post(api_url, json=request, headers=headers)
+#     return HttpResponse('success')
 
 
 

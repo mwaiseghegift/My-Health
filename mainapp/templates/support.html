@@ -20,22 +20,43 @@
             The gift that has been given to me says much about our capacity for great compassion and generosity, and I hope it sends an inspiring message to others about the importance of organ donation.
             Read more at <a href="https://www.brainyquote.com/topics/donation-quotes">https://www.brainyquote.com/topics/donation-quotes</a>
           </p>
-  
-            <form id="amount-form" action="" method="POST">
-              {% csrf_token %}
-              <div class="donate mdb-color">
-                <label class="donate-text" for="your_amount">Amount(USD): </label><br><br>
-                <input class="donate-input" id="amount" type="text" name="amount"><br><br>
-                <a href="{% url 'mainapp:paypall' %}"><input  id="continue-donate" class="" type="submit" value="Continue"></a>
-                
-              </div> 
-          </form>
-  </div>
+      </div>
   
         </div>
       </div>
   
-      
+      <section class="form">
+        <div class="container">
+          <div class="row  donate-form">
+            <div class="col-md-6">
+              <img src="{% static 'images/tech.jpg' %}" alt="" class="img-fluid">
+            </div>
+            <div class="col-lg-6">
+              <h3 class="text-left text-light font-weight-bold py-3">Donate Via Mpesa</h3>
+              <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                  <div class="col-lg-12">
+                    <input type="tel" name="telephone" class="form-control" placeholder="phone number" id=""
+                      {% if form.is_bound %} value="{{ form.telephone.value }}" {% endif %}>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-lg-12 pt-3">
+                    <input type="number" name="amount" class="form-control" placeholder="amount" id=""
+                    {% if form.is_bound %} value="{{ form.amount.value }}" {% endif %}>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-lg-12 pt-3">
+                    <button type="submit" class="btn1">Proceed</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
   
   
       
