@@ -8,7 +8,7 @@ class AmountForm(forms.Form):
 
 
 class ContactForm(forms.Form):
-    name = forms.CharField()
+    name = forms.CharField(max_length=100)
     email = forms.EmailField()
     subject = forms.CharField(max_length=50)
     message = forms.CharField(widget=forms.Textarea)  

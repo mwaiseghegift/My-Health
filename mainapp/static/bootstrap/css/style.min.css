@@ -292,3 +292,18 @@ nav {
   text-align: center;
   padding: 3px
 }
+
+.btn2 {
+  color: white;
+  background-color: rgb(68, 77, 117);
+  border-color: white;
+  font-weight: bold;
+  border: 2px solid;
+}
+
+.btn:hover {
+  background-color: white;
+  color: rgb(68, 77, 117);
+  font-weight: bold;
+  border: 2px solid;
+}
