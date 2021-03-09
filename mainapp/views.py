@@ -83,23 +83,23 @@ def SupportView(request, *args, **kwargs):
             print(telephone)
             request.session['amount'] = amount
             
-            # access_token = MpesaAccessToken.validated_mpesa_access_token
-            # api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-            # headers = {"Authorization":"Bearer %s" % access_token}
-            # request = {
-            #     "BusinessShortCode": LipaNaMpesaPassword.business_short_code,
-            #     "Password": LipaNaMpesaPassword.decode_password,
-            #     "Timestamp": LipaNaMpesaPassword.lipa_time,
-            #     "TransactionType": "CustomerPayBillOnline",
-            #     "Amount": amount,
-            #     "PartyA": "254712860997",
-            #     "PartyB": "174379",
-            #     "PhoneNumber": "254712860997",
-            #     "CallBackURL": "https://myhealthke.pythonanywhere.com/saf",
-            #     "AccountReference": "MyHealth",
-            #     "TransactionDesc": "myhealth test"
-            # }
-            # response = requests.post(api_url, json=request, headers=headers)
+            access_token = MpesaAccessToken.validated_mpesa_access_token
+            api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+            headers = {"Authorization":"Bearer %s" % access_token}
+            request = {
+                "BusinessShortCode": LipaNaMpesaPassword.business_short_code,
+                "Password": LipaNaMpesaPassword.decode_password,
+                "Timestamp": LipaNaMpesaPassword.lipa_time,
+                "TransactionType": "CustomerPayBillOnline",
+                "Amount": f"{amount}",
+                "PartyA": f"{telephone}",
+                "PartyB": "174379",
+                "PhoneNumber": f"{telephone}",
+                "CallBackURL": "https://myhealthke.pythonanywhere.com/saf",
+                "AccountReference": "MyHealth",
+                "TransactionDesc": "myhealth test"
+            }
+            response = requests.post(api_url, json=request, headers=headers)
             return HttpResponseRedirect('/support/checkout/')
                  
         else:
@@ -150,38 +150,37 @@ def ContactView(request, *args, **kwargs):
     return render(request, 'contact.html', context)
 
 def getAccessToken(request):
-    pass
-#     consumer_key = 'n9KbDodntGKwIpwrENmqwghaXk18WstU'
-#     consumer_secret = 'TGxmOUSsa4FK4cuD'
-#     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+    consumer_key = 'n9KbDodntGKwIpwrENmqwghaXk18WstU'
+    consumer_secret = 'TGxmOUSsa4FK4cuD'
+    api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
     
-#     r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
-#     mpesa_access_token = json.loads(r.text)
-#     validated_mpesa_access_token = mpesa_access_token['access_token']
+    r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+    mpesa_access_token = json.loads(r.text)
+    validated_mpesa_access_token = mpesa_access_token['access_token']
     
-#     return HttpResponse(validated_mpesa_access_token)
+    return HttpResponse(validated_mpesa_access_token)
 
 
 def LipaNaMpesaOnline(request):
     pass
-#     access_token = MpesaAccessToken.validated_mpesa_access_token
-#     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-#     headers = {"Authorization":"Bearer %s" % access_token}
-#     request = {
-#         "BusinessShortCode": LipaNaMpesaPassword.business_short_code,
-#         "Password": LipaNaMpesaPassword.decode_password,
-#         "Timestamp": LipaNaMpesaPassword.lipa_time,
-#         "TransactionType": "CustomerPayBillOnline",
-#         "Amount": "5",
-#         "PartyA": "254712860997",
-#         "PartyB": "174379",
-#         "PhoneNumber": "254712860997",
-#         "CallBackURL": "https://myhealthke.pythonanywhere.com/saf",
-#         "AccountReference": "Gift",
-#         "TransactionDesc": "myhealth test"
-#     }
-#     response = requests.post(api_url, json=request, headers=headers)
-#     return HttpResponse('success')
+    access_token = MpesaAccessToken.validated_mpesa_access_token
+    api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+    headers = {"Authorization":"Bearer %s" % access_token}
+    request = {
+        "BusinessShortCode": LipaNaMpesaPassword.business_short_code,
+        "Password": LipaNaMpesaPassword.decode_password,
+        "Timestamp": LipaNaMpesaPassword.lipa_time,
+        "TransactionType": "CustomerPayBillOnline",
+        "Amount": "5",
+        "PartyA": "254712860997",
+        "PartyB": "174379",
+        "PhoneNumber": "254712860997",
+        "CallBackURL": "https://myhealthke.pythonanywhere.com/saf",
+        "AccountReference": "Gift",
+        "TransactionDesc": "myhealth test"
+    }
+    response = requests.post(api_url, json=request, headers=headers)
+    return HttpResponse('success')
 
 
 
