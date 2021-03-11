@@ -24,7 +24,7 @@
            <div class="form-row">
              <div class="col-lg-12 p-2">
                 <input type="text" name="name" class="form-control" id="" placeholder="Name">
-                {% for error in form.name.errors %}
+                {% for error in form.errors %}
                   <small class=text-danger>{{ error }}</small>
                 {% endfor %}
              </div>
